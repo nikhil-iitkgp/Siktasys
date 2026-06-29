@@ -37,10 +37,9 @@ app.use(
 // ✅ MongoDB Connection
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => console.log(" MongoDB Connected"))
+  .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => {
-    console.error(" MongoDB Connection Error:", err);
-    process.exit(1);
+    console.error("❌ MongoDB Connection Error:", err.message);
   });
 
 // API Routes
