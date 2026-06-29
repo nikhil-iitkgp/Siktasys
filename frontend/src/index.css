@@ -163,7 +163,7 @@ h1 {
 
 /* Navigation Buttons */
 .btn-nav {
-  @apply text-white text-lg font-medium transition duration-300 hover:text-blue-400;
+  @apply text-gray-100 text-lg font-semibold tracking-wide transition duration-300 hover:text-cyan-300 drop-shadow-sm;
 }
 
 .btn-nav-mobile {

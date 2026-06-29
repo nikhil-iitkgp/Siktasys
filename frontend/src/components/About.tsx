@@ -4,12 +4,7 @@ import { motion } from "framer-motion";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Breadcrumb from "../components/Breadcrumb";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "../components/ui/card";
+import { Card } from "../components/ui/card";
 import { FaLinkedin } from "react-icons/fa";
 
 // Import team member images
@@ -101,62 +96,58 @@ const About = () => {
           Leadership Team
         </motion.h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="flex flex-col gap-8 max-w-4xl mx-auto">
           {leadershipTeam.map((leader, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: index * 0.1 + 0.4, duration: 0.6 }}
-              whileHover={{ 
-                scale: 1.02, 
-                y: -5,
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 + 0.4, duration: 0.6 }}
+              whileHover={{
+                scale: 1.01,
+                y: -3,
                 transition: { duration: 0.3 }
               }}
               className="rounded-xl overflow-hidden"
             >
-              <Card className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 shadow-2xl rounded-xl p-6 h-full relative overflow-hidden group hover:border-gray-600/70 transition-all duration-300">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10"></div>
+              <Card className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 shadow-2xl rounded-xl relative overflow-hidden group hover:border-cyan-700/50 transition-all duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                <div className="flex flex-row items-start gap-6 p-6 relative z-10">
+                  {/* Avatar column */}
+                  <div className="flex-shrink-0 flex flex-col items-center gap-4 pt-1">
+                    <div className="relative">
+                      <img
+                        src={leader.image}
+                        alt={leader.name}
+                        className="w-28 h-28 rounded-full border-4 border-cyan-500/40 object-cover shadow-xl"
+                      />
+                      <div className="absolute inset-0 rounded-full ring-2 ring-cyan-400/20 group-hover:ring-cyan-400/40 transition-all duration-300"></div>
+                    </div>
+                    <a
+                      href={leader.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-sm font-semibold rounded-lg shadow-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 whitespace-nowrap"
+                    >
+                      <FaLinkedin size={16} />
+                      LinkedIn
+                    </a>
+                  </div>
+
+                  {/* Content column */}
+                  <div className="flex-1 min-w-0">
+                    <div className="mb-1">
+                      <h3 className="text-2xl font-bold text-white leading-tight">{leader.name}</h3>
+                      <p className="text-cyan-400 font-semibold text-base mt-1">{leader.title}</p>
+                    </div>
+                    <div className="mt-3 border-t border-gray-700/60 pt-3">
+                      <p className="text-gray-200 leading-relaxed text-lg">
+                        {leader.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                
-                <CardHeader className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6 relative z-10">
-                  <div className="relative">
-                    <img
-                      src={leader.image}
-                      alt={leader.name}
-                      className="w-24 h-24 rounded-full border-4 border-gradient-to-r from-blue-400 to-cyan-400 object-cover shadow-lg"
-                    />
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/20 to-cyan-400/20 group-hover:from-blue-400/30 group-hover:to-cyan-400/30 transition-all duration-300"></div>
-                  </div>
-                  <div className="text-center sm:text-left">
-                    <CardTitle className="text-2xl font-bold text-white mb-2">
-                      {leader.name}
-                    </CardTitle>
-                    <p className="text-cyan-400 font-semibold text-lg">{leader.title}</p>
-                  </div>
-                </CardHeader>
-
-                <CardContent className="relative z-10">
-                  <p className="text-gray-300 mb-6 leading-relaxed">
-                    {leader.description}
-                  </p>
-
-                  {/* LinkedIn Button */}
-                  <a
-                    href={leader.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg shadow-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 hover:text-white focus:text-white"
-                  >
-                    <FaLinkedin size={20} className="mr-2 text-white" />
-                    <span className="text-white">Connect on LinkedIn</span>
-                  </a>
-                </CardContent>
-                
-                {/* Hover Effect Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
               </Card>
             </motion.div>
           ))}

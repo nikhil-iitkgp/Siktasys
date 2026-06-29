@@ -17,7 +17,7 @@ const Footer = () => {
             SIKTASYS
           </h2>
           <p className="text-gray-300 text-sm mt-2 font-rajdhani">
-            © 2025 All rights reserved.
+            © {new Date().getFullYear()} SiktaSys. All rights reserved.
           </p>
         </div>
 

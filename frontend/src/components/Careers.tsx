@@ -119,9 +119,12 @@ const Careers = () => {
               <Mail className="text-green-400 mr-3" size={24} />
               <p className="text-lg font-medium">
                 Contact us at{" "}
-                <span className="font-semibold text-green-400">
+                <a
+                  href="mailto:careers@siktasys.com"
+                  className="font-semibold text-green-400 hover:text-green-300 underline underline-offset-2 transition-colors duration-200"
+                >
                   careers@siktasys.com
-                </span>
+                </a>
               </p>
             </div>
           </div>

@@ -74,7 +74,7 @@ const Products = () => {
         <h1 className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 mb-6 leading-relaxed pb-2">
           Our Products
         </h1>
-        <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+        <p className="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
           Explore our <span className="text-cyan-400 font-semibold">cutting-edge semiconductor solutions</span> designed for next-generation applications
         </p>
       </motion.div>
@@ -87,52 +87,46 @@ const Products = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            whileHover={{ 
-              scale: 1.02, 
-              y: -10,
+            whileHover={{
+              scale: 1.02,
+              y: -8,
               transition: { duration: 0.3 }
             }}
             className="rounded-xl overflow-hidden h-full"
           >
-            <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 shadow-2xl rounded-xl p-6 h-full flex flex-col relative overflow-hidden group hover:border-gray-600/70 transition-all duration-300">
-              {/* Background Pattern */}
-              <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10"></div>
-              </div>
-              
-              {/* Product Image */}
-              <div className="w-full flex justify-center mb-6 relative z-10">
+            <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 shadow-2xl rounded-xl h-full flex flex-col relative overflow-hidden group hover:border-cyan-700/50 transition-all duration-300">
+              {/* Hover glow overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl pointer-events-none z-10"></div>
+
+              {/* Product Image — top 60%, zero padding, full bleed */}
+              <div className="w-full flex-none bg-gray-950 rounded-t-xl overflow-hidden" style={{ height: "220px" }}>
                 <motion.img
                   src={product.image}
                   alt={product.title}
-                  className="w-40 h-40 object-contain rounded-lg shadow-lg"
+                  className="w-full h-full object-contain"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.8, delay: index * 0.1 + 0.2 }}
                 />
               </div>
 
-              {/* Product Info */}
-              <div className="text-center flex-grow relative z-10">
-                <h3 className="text-2xl font-bold text-white mb-3 leading-tight">
+              {/* Product Info — bottom 40% */}
+              <div className="flex flex-col flex-1 p-5 pt-4 relative z-0">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-2 leading-tight text-center">
                   {product.title}
                 </h3>
-                <p className="text-gray-300 leading-relaxed mb-6">
+                <p className="text-gray-200 leading-relaxed text-base md:text-lg text-center flex-1">
                   {product.description}
                 </p>
-              </div>
 
-              {/* View Details Button */}
-              <div className="mt-auto relative z-10">
-                <Link to={product.link}>
-                  <Button className="w-full bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-600 text-white px-6 py-3 text-lg font-semibold rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:from-blue-600 hover:via-cyan-600 hover:to-blue-700">
-                    View Details
-                  </Button>
-                </Link>
+                <div className="mt-4">
+                  <Link to={product.link}>
+                    <Button className="w-full bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-600 text-white px-6 py-3 text-base md:text-lg font-semibold rounded-xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:from-blue-600 hover:via-cyan-600 hover:to-blue-700">
+                      View Details
+                    </Button>
+                  </Link>
+                </div>
               </div>
-              
-              {/* Hover Effect Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
             </div>
           </motion.div>
         ))}
