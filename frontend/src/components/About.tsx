@@ -33,7 +33,7 @@ const leadershipTeam: Leader[] = [
     image: DrPradipMondal,
     linkedin: "https://www.linkedin.com/in/pradip-mandal-36151b273/?originalSubdomain=in",
     description:
-      "PhD EE&CS, BTech - IIEST. Ex Philips Semis, Motorola, Alliance Semiconductor, Cadence, Synopsys. Professor, IIT Kharagpur. Expertise: Analog Mixed Signal IC Design, Power Management, Analog Frontend, RFIC IC Testing, Characterization",
+      "BTech, BE College Shibpur, PhD, IISc. Ex Philips Semis, Motorola, Alliance Semiconductor, Cadence, Synopsys. Professor, IIT Kharagpur. Expertise: Analog Mixed Signal IC Design, Power Management, Analog Frontend, RFIC IC Testing, Characterization",
   },
   {
     name: "Dr. Amit Dutta",
@@ -41,7 +41,7 @@ const leadershipTeam: Leader[] = [
     image: DrAmitDatta,
     linkedin: "https://www.linkedin.com/in/dr-amit-dutta-41523562/?originalSubdomain=in",
     description:
-      "PhD, IISC Bangalore. Assoc. Professor, IIT Kharagpur Ex NoC, Broadcom, Texas Instruments. Expertise: SoC Architect, IP Design, Wireless Communication, Modem Algorithm and Architecture",
+      "BTech, IIEST Shibpur, PhD, IISc. Assoc. Professor, IIT Kharagpur Ex NoC, Broadcom, Texas Instruments. Expertise: SoC Architect, IP Design, Wireless Communication, Modem Algorithm and Architecture",
   },
   {
     name: "Dr. Mrigank Sharad",
@@ -86,7 +86,7 @@ const About = () => {
       </motion.div>
 
       {/* Leadership Team */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-24 py-8">
+      <div className="max-w-6xl mx-auto px-6 sm:px-12 lg:px-16 py-8">
         <motion.h2 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -96,7 +96,7 @@ const About = () => {
           Leadership Team
         </motion.h2>
         
-        <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {leadershipTeam.map((leader, index) => (
             <motion.div
               key={index}
@@ -104,48 +104,48 @@ const About = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.15 + 0.4, duration: 0.6 }}
               whileHover={{
-                scale: 1.01,
-                y: -3,
+                scale: 1.02,
+                y: -4,
                 transition: { duration: 0.3 }
               }}
-              className="rounded-xl overflow-hidden"
+              className="rounded-xl overflow-hidden h-full"
             >
-              <Card className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 shadow-2xl rounded-xl relative overflow-hidden group hover:border-cyan-700/50 transition-all duration-300">
+              <Card className="h-full bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 shadow-2xl rounded-xl relative overflow-hidden group hover:border-cyan-700/50 transition-all duration-300">
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                <div className="flex flex-row items-start gap-6 p-6 relative z-10">
-                  {/* Avatar column */}
-                  <div className="flex-shrink-0 flex flex-col items-center gap-4 pt-1">
-                    <div className="relative">
-                      <img
-                        src={leader.image}
-                        alt={leader.name}
-                        className="w-28 h-28 rounded-full border-4 border-cyan-500/40 object-cover shadow-xl"
-                      />
-                      <div className="absolute inset-0 rounded-full ring-2 ring-cyan-400/20 group-hover:ring-cyan-400/40 transition-all duration-300"></div>
-                    </div>
-                    <a
-                      href={leader.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-sm font-semibold rounded-lg shadow-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 whitespace-nowrap"
-                    >
-                      <FaLinkedin size={16} />
-                      LinkedIn
-                    </a>
+                <div className="flex flex-col items-center gap-4 p-6 relative z-10 h-full">
+                  {/* Avatar */}
+                  <div className="relative mt-2">
+                    <img
+                      src={leader.image}
+                      alt={leader.name}
+                      className="w-28 h-28 rounded-full border-4 border-cyan-500/40 object-cover shadow-xl"
+                    />
+                    <div className="absolute inset-0 rounded-full ring-2 ring-cyan-400/20 group-hover:ring-cyan-400/40 transition-all duration-300"></div>
                   </div>
 
-                  {/* Content column */}
-                  <div className="flex-1 min-w-0">
-                    <div className="mb-1">
-                      <h3 className="text-2xl font-bold text-white leading-tight">{leader.name}</h3>
-                      <p className="text-cyan-400 font-semibold text-base mt-1">{leader.title}</p>
-                    </div>
-                    <div className="mt-3 border-t border-gray-700/60 pt-3">
-                      <p className="text-gray-200 leading-relaxed text-lg">
-                        {leader.description}
-                      </p>
-                    </div>
+                  {/* Name & Title */}
+                  <div className="text-center">
+                    <h3 className="text-xl font-bold text-white leading-tight">{leader.name}</h3>
+                    <p className="text-cyan-400 font-semibold text-sm mt-1">{leader.title}</p>
+                  </div>
+
+                  {/* LinkedIn */}
+                  <a
+                    href={leader.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-sm font-semibold rounded-lg shadow-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300"
+                  >
+                    <FaLinkedin size={16} />
+                    LinkedIn
+                  </a>
+
+                  {/* Description */}
+                  <div className="border-t border-gray-700/60 pt-3 w-full flex-1">
+                    <p className="text-gray-300 leading-relaxed text-sm text-center">
+                      {leader.description}
+                    </p>
                   </div>
                 </div>
               </Card>
